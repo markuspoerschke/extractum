@@ -31,7 +31,7 @@ The extracted information are returned as an object of type `Extractum\Essence`.
 | `image`       | The URL to the preview image. Normally defined as a Open Graph attribute.              |
 | `language`    | The two character language code of the HTML tag.                                       |
 | `links`       | All links within the main content.                                                     |
-| `parsedDate`  | A `DateTimeImmutable` object if `date` 
+| `parsedDate`  | A `DateTimeImmutable` object if `date`                                                 |
 | `text`        | Unformatted text of the main content. All new lines and not needed spaces are removed. |
 | `title`       | The web pages’s title. This is normally the content of the first `h1` tag.             |
 
