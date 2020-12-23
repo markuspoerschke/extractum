@@ -59,8 +59,8 @@ class DateParser
                 continue;
             }
 
-            $formattedDateAsString = preg_replace($pattern, $options[self::REPLACEMENT], $dateAsString, 1);
-            $date = DateTimeImmutable::createFromFormat($options[self::FORMAT], $formattedDateAsString);
+            $formattedDate = preg_replace($pattern, $options[self::REPLACEMENT], $dateAsString, 1);
+            $date = DateTimeImmutable::createFromFormat($options[self::FORMAT], $formattedDate);
 
             return $date ?: null;
         }

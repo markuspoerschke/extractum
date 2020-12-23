@@ -12,20 +12,26 @@
 namespace Extractum\Extractor;
 
 use ML\JsonLD;
-use Symfony\Component\DomCrawler\Crawler;
 
 class FreeExtractor extends AbstractExtractor
 {
-    public function extract(Crawler $crawler, ?JsonLD\Document $jsonLd): bool
+    public function extract(?JsonLD\Document $jsonLd): bool
     {
-        if ($jsonLd !== null && ($graph = $jsonLd->getGraph()) !== null) {
-            $nodes = $graph->getNodes();
-            if (isset($nodes[0])) {
-                $property = $nodes[0]->getProperty('http://schema.org/isAccessibleForFree');
-                if ($property instanceof JsonLD\TypedValue) {
-                    if (strtolower($property->getValue()) === 'false') {
-                        return false;
-                    }
+        if ($jsonLd === null) {
+            return true;
+        }
+
+        $graph = $jsonLd->getGraph();
+        if ($graph === null) {
+            return true;
+        }
+
+        $nodes = $graph->getNodes();
+        if (isset($nodes[0])) {
+            $property = $nodes[0]->getProperty('http://schema.org/isAccessibleForFree');
+            if ($property instanceof JsonLD\TypedValue) {
+                if (strtolower($property->getValue()) === 'false') {
+                    return false;
                 }
             }
         }

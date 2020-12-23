@@ -27,7 +27,7 @@ class FreeExtractorTest extends TestCase
     public function testFreeIsExtracted(string $html, $expected): void
     {
         $crawler = new Crawler($html, 'https://www.example.com');
-        $actual = (new FreeExtractor())->extract($crawler, $this->extractJsonLd($crawler));
+        $actual = (new FreeExtractor())->extract($this->extractJsonLd($crawler));
 
         self::assertSame($expected, $actual);
     }

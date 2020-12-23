@@ -25,8 +25,12 @@ use Extractum\Helper\ExtractJsonLdTrait;
 use Extractum\Parser\DateParser;
 use Extractum\Scorer\DocumentScorer;
 use Extractum\StopWords\StopWords;
+use ML\JsonLD;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 final class Extractor
 {
     use ExtractJsonLdTrait;
@@ -76,6 +80,11 @@ final class Extractor
 
         $jsonLd = $this->extractJsonLd($document);
 
+        return $this->createEssence($document, $jsonLd, $topNode, $language, $scorerLanguage);
+    }
+
+    private function createEssence(Crawler $document, ?JsonLD\Document $jsonLd, Crawler $topNode, string $language, string $scorerLanguage): Essence
+    {
         $date = $this->dateExtractor->extract($document, $jsonLd);
         $essence = (new Essence())
             ->setDate($date)
@@ -85,11 +94,11 @@ final class Extractor
             ->setLinks($this->linksExtractor->extract($topNode))
             ->setText($this->textExtractor->extract($topNode))
             ->setTitle($this->titleExtractor->extract($document))
-            ->setFree($this->freeExtractor->extract($document, $jsonLd))
+            ->setFree($this->freeExtractor->extract($jsonLd))
         ;
 
-        if ($date !== null && $language !== null) {
-            $essence->setParsedDate($this->dateParser->parse($essence->getDate(), $essence->getLanguage()));
+        if ($date !== null) {
+            $essence->setParsedDate($this->dateParser->parse($date, $scorerLanguage));
         }
 
         return $essence;

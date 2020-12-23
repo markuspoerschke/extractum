@@ -27,24 +27,36 @@ SELECTOR;
 
     public function extract(Crawler $crawler, ?JsonLD\Document $jsonLd): ?string
     {
-        if ($jsonLd !== null && ($graph = $jsonLd->getGraph()) !== null) {
-            $nodes = $graph->getNodes();
-            if (isset($nodes[0])) {
-                $images = $nodes[0]->getProperty('http://schema.org/image');
-                if ($images instanceof JsonLD\NodeInterface) {
-                    $images = [$images];
-                }
+        return $this->extractFromJsonLd($jsonLd) ?? $this->extractAttribute('content', self::CANDIDATE_SELECTORS, $crawler);
+    }
 
-                /** @var JsonLD\NodeInterface $image */
-                foreach ($images ?? [] as $image) {
-                    $url = $image->getProperty('http://schema.org/url');
-                    if ($url instanceof JsonLD\NodeInterface) {
-                        return $url->getId();
-                    }
+    private function extractFromJsonLd(?JsonLD\Document $jsonLd): ?string
+    {
+        if ($jsonLd === null) {
+            return null;
+        }
+
+        $graph = $jsonLd->getGraph();
+        if ($graph === null) {
+            return null;
+        }
+
+        $nodes = $graph->getNodes();
+        if (isset($nodes[0])) {
+            $images = $nodes[0]->getProperty('http://schema.org/image');
+            if ($images instanceof JsonLD\NodeInterface) {
+                $images = [$images];
+            }
+
+            /** @var JsonLD\NodeInterface $image */
+            foreach ($images ?? [] as $image) {
+                $url = $image->getProperty('http://schema.org/url');
+                if ($url instanceof JsonLD\NodeInterface) {
+                    return $url->getId();
                 }
             }
         }
 
-        return $this->extractAttribute('content', self::CANDIDATE_SELECTORS, $crawler);
+        return null;
     }
 }
