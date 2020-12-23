@@ -50,16 +50,11 @@ SELECTOR;
 
     public function extract(Crawler $crawler, ?JsonLD\Document $jsonLd): ?string
     {
-        if ($jsonLd !== null && ($graph = $jsonLd->getGraph()) !== null) {
-            foreach ($graph->getNodes() as $node) {
-                /** @var JsonLD\TypedValue|null $property */
-                $property = $node->getProperty('http://schema.org/datePublished');
-                if ($property instanceof JsonLD\TypedValue) {
-                    return $property->getValue();
-                }
-            }
-        }
+        return $this->extractFromJsonLd($jsonLd) ?? $this->extractFromCrawler($crawler);
+    }
 
+    private function extractFromCrawler(Crawler $crawler): ?string
+    {
         $candidates = $crawler->filter(self::CANDIDATE_SELECTOR);
         /** @var DOMNode|DOMElement $node */
         foreach ($candidates as $node) {
@@ -84,6 +79,28 @@ SELECTOR;
             $text = $this->stringCleaner->clean($node->textContent);
             if ($text !== '') {
                 return $text;
+            }
+        }
+
+        return null;
+    }
+
+    private function extractFromJsonLd(?JsonLD\Document $jsonLd): ?string
+    {
+        if ($jsonLd === null) {
+            return null;
+        }
+
+        $graph = $jsonLd->getGraph();
+        if ($graph === null) {
+            return null;
+        }
+
+        foreach ($graph->getNodes() as $node) {
+            /** @var JsonLD\TypedValue|null $property */
+            $property = $node->getProperty('http://schema.org/datePublished');
+            if ($property instanceof JsonLD\TypedValue) {
+                return $property->getValue();
             }
         }
 
