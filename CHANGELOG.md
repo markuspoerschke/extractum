@@ -29,5 +29,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.2]: https://github.com/markuspoerschke/extractum/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/markuspoerschke/extractum/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/markuspoerschke/extractum/compare/471d591e9fe1aceec944860ce74c95807385f1f1...1.0.0
-[unreleased]: https://github.com/markuspoerschke/extractum/compare/1.0.2...HEAD
-[1.0.2]: https://github.com/markuspoerschke/extractum/compare/1.0.1...1.0.2
