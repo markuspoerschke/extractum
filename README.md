@@ -4,7 +4,7 @@ _Extractum_ is a PHP library that extracts information from web pages.
 
 ## Getting Started
 
-### Installation
+### Installationn
 
 ```bash
 composer require markuspoerschke/extractum
