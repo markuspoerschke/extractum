@@ -3,7 +3,7 @@ name: "Draft new release"
 on:
   workflow_dispatch:
     inputs:
-      versions:
+      version:
         description: "The version you want to release"
         required: true
       target_branch:
