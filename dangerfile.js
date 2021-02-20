@@ -20,13 +20,12 @@ if (packageChanged && !lockfileChanged) {
 }
 
 // Warn if there are library changes, but not tests
-const srcChanges = modifiedAppFiles.filter((filepath) =>
+const hasSrcChanges = modifiedAppFiles.filter((filepath) =>
     filepath.includes("src")
-);
-const testChanges = modifiedAppFiles.filter((filepath) =>
+).length > 0;
+const hasTestChanges = modifiedAppFiles.filter((filepath) =>
     filepath.includes("tests")
-);
-const hasTestChanges = testChanges.length > 0;
+).length > 0;
 if (hasAppChanges && !hasTestChanges) {
     warn(
         "There are code changes, but no tests changed or added. That's okay as long as you're refactoring existing code"
