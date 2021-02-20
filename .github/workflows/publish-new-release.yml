@@ -27,7 +27,7 @@ jobs:
           version: ${{ env.RELEASE_VERSION }}
 
       - name: Create Release
-        uses: thomaseizinger/create-release@1
+        uses: thomaseizinger/create-release@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
