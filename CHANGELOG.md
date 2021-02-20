@@ -11,12 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Improved release process. No changes to the code basis.
 
-## [1.0.2] - 2021-02-20
-
-### Changed
-
--   Improved release process. No changes to the code basis.
-
 ## [1.0.1] - 2021-02-20
 
 ### Removed
