@@ -1,6 +1,6 @@
 name: Code Style
 
-on: [pull_request]
+on: [pull_request_target]
 
 jobs:
   fix-code-style:
@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
 
       - name: Run php-cs-fixer
         uses: docker://oskarstark/php-cs-fixer-ga
