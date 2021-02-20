@@ -26,7 +26,7 @@ const hasSrcChanges = modifiedAppFiles.filter((filepath) =>
 const hasTestChanges = modifiedAppFiles.filter((filepath) =>
     filepath.includes("tests")
 ).length > 0;
-if (hasAppChanges && !hasTestChanges) {
+if (hasSrcChanges && !hasTestChanges) {
     warn(
         "There are code changes, but no tests changed or added. That's okay as long as you're refactoring existing code"
     );
