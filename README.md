@@ -4,7 +4,7 @@ _Extractum_ is a PHP library that extracts information from web pages.
 
 ## Getting Started
 
-### Installationn
+### Installation
 
 ```bash
 composer require markuspoerschke/extractum
@@ -21,10 +21,6 @@ $essence = $extractor->extract($html, $uri);
 ```
 
 ## Extracted Information
-
-Thies ist an sentenze with errors. I has the hope, that review dog will comment on this misstaken.
-
-This are another mistake. A error occurred.
 
 The extracted information are returned as an object of type `Extractum\Essence`.
 
