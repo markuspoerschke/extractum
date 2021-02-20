@@ -8,6 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Danger
-        uses: danger/danger-js@9
+        uses: danger/danger-js@10
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
