@@ -16,7 +16,7 @@ composer require markuspoerschke/extractum
 $uri = 'https://www.example.com/';
 $html = file_get_contents($uri);
 
-$extractor = new Extractum\Extractor();
+$extractor = new Extractum\Extractor('en');
 $essence = $extractor->extract($html, $uri);
 ```
 
