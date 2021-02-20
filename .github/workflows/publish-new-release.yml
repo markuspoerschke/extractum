@@ -20,13 +20,19 @@ jobs:
 
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
 
+      - name: Parse Changelog Entry
+        id: changelog
+        uses: coditory/changelog-parser@v1
+        with:
+          version: ${{ env.RELEASE_VERSION }}
+
       - name: Create Release
-        uses: thomaseizinger/create-release@1.0.0
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          target_commitish: ${{ github.event.pull_request.merge_commit_sha }}
           tag_name: ${{ env.RELEASE_VERSION }}
-          name: ${{ env.RELEASE_VERSION }}
+          release_name: Release ${{ env.RELEASE_VERSION }}
+          body: ${{ steps.changelog.outputs.description }}
           draft: false
           prerelease: false
