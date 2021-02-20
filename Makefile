@@ -12,6 +12,7 @@ help:
 	@echo '  dependencies        Installs composer dependencies'
 	@echo '  test                Execute all tests'
 	@echo '  fix                 Fixes composer.json and code style'
+	@echo '  fix-prettier        Fix code style of non PHP files (not included in "fix" target)'
 
 # Build
 .PHONY: dependencies
@@ -62,3 +63,7 @@ fix-composer: dependencies
 fix-composer:
 	composer normalize --no-update-lock
 	composer update nothing
+
+.PHONY: fix-prettier
+fix-prettier:
+	npx prettier@^2 . --write
