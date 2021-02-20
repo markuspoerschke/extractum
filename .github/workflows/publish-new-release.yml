@@ -11,10 +11,9 @@ jobs:
   release:
     name: Publish new release
     runs-on: ubuntu-20.04
-    if: github.event.pull_request.merged == true # only merged pull requests must trigger this job
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
     steps:
       - name: Extract version from branch name (for release branches)
-        if: startsWith(github.event.pull_request.head.ref, 'release/')
         run: |
           BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
           VERSION=${BRANCH_NAME#release/}
