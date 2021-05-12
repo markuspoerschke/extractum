@@ -25,7 +25,7 @@ jobs:
 
       - name: Parse Changelog Entry
         id: changelog
-        uses: coditory/changelog-parser@v1
+        uses: coditory/changelog-parser@v1.0.2
         with:
           version: ${{ env.RELEASE_VERSION }}
 
