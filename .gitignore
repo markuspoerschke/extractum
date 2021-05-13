@@ -1,6 +1,5 @@
+*.cache
 .idea
-.php_cs.cache
-.phpunit.result.cache
 /build
 /phpunit.xml
 /vendor
