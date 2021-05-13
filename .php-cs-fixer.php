@@ -15,13 +15,15 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/src')
     ->in(__DIR__ . '/tests');
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+$config
     ->setRules([
         '@Symfony' => true,
         'ordered_imports' => true,
         'concat_space' => ['spacing' => 'one'],
-        'array_syntax' => ['syntax' => 'short'],
         'header_comment' => ['header' => $headerComment],
         'yoda_style' => false,
     ])
     ->setFinder($finder);
+
+return $config;
