@@ -19,7 +19,7 @@
         "ext-dom": "*",
         "ext-json": "*",
         "ml/json-ld": "^1.2",
-        "symfony/css-selector": "^5.1",
+        "symfony/css-selector": "^5.2",
         "symfony/dom-crawler": "^5.2",
         "voku/stop-words": "^2.0"
     },
