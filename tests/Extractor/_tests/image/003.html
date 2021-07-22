@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta
+            property="og:image"
+            content="https://cdn.example.com/image-from-meta-tag.jpeg"
+        />
+
+        <script type="application/ld+json" class="yoast-schema-graph">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://example.com/#organization",
+                        "name": "Example Inc.",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "@id": "https://example.com/#logo",
+                            "inLanguage": "de-DE",
+                            "url": "https://example.com/logo.png",
+                            "contentUrl": "https://example.com/logo.png",
+                            "width": 300,
+                            "height": 78,
+                            "caption": "Example Inc."
+                        },
+                        "image": {
+                            "@id": "https://example.com/#logo"
+                        }
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://example.com/#website",
+                        "url": "https://example.com/",
+                        "name": "Example",
+                        "publisher": {
+                            "@id": "https://example.com/#organization"
+                        },
+                        "inLanguage": "de-DE"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "@id": "https://example.com/website/#primaryimage",
+                        "inLanguage": "de-DE",
+                        "url": "https://example.com/website-image.png",
+                        "contentUrl": "https://example.com/website-image.png",
+                        "width": 1080,
+                        "height": 810
+                    },
+                    {
+                        "@type": "WebPage",
+                        "@id": "https://example.com/webpage/#webpage",
+                        "url": "https://example.com/webpage/",
+                        "isPartOf": {
+                            "@id": "https://example.com/#website"
+                        },
+                        "primaryImageOfPage": {
+                            "@id": "https://example.com/website/#primaryimage"
+                        },
+                        "datePublished": "2021-07-22T12:00:28+00:00",
+                        "dateModified": "2021-07-22T12:00:47+00:00",
+                        "inLanguage": "de-DE"
+                    }
+                ]
+            }
+        </script>
+    </head>
+</html>
