@@ -9,14 +9,13 @@ export XDEBUG_MODE = coverage
 .PHONY: help
 help:
 	@echo 'Available targets:'
-	@echo '  dependencies        Installs composer dependencies'
+	@echo '  vendor              Installs composer dependencies'
 	@echo '  test                Execute all tests'
 	@echo '  fix                 Fixes composer.json and code style'
 	@echo '  fix-prettier        Fix code style of non PHP files (not included in "fix" target)'
 
 # Build
-.PHONY: dependencies
-dependencies:
+vendor:
 	composer install --no-interaction
 
 # Test
@@ -24,15 +23,15 @@ dependencies:
 test: test-code-style test-psalm test-phpmd test-phpunit test-composer-normalize test-validate-composer
 
 .PHONY: test-code-style
-test-code-style: dependencies
+test-code-style: vendor
 	php-cs-fixer fix --dry-run --diff
 
 .PHONY: test-psalm
-test-psalm: dependencies
+test-psalm: vendor
 	psalm -m --no-progress ${PSALM_FLAGS}
 
 .PHONY: test-phpunit
-test-phpunit: dependencies
+test-phpunit: vendor
 	phpunit ${PHPUNIT_FLAGS}
 
 .PHONY: test-validate-composer
@@ -40,12 +39,12 @@ test-validate-composer:
 	composer validate
 
 .PHONY: test-composer-normalize
-test-composer-normalize: dependencies
+test-composer-normalize: vendor
 test-composer-normalize:
 	composer normalize --dry-run --diff
 
 .PHONY: test-phpmd
-test-phpmd: dependencies
+test-phpmd: vendor
 test-phpmd:
 	phpmd ./src text rulesets.xml
 
@@ -54,12 +53,12 @@ test-phpmd:
 fix: fix-code-style fix-composer
 
 .PHONY: fix-code-style
-fix-code-style: dependencies
+fix-code-style: vendor
 fix-code-style:
 	php-cs-fixer -- fix
 
 .PHONY: fix-composer
-fix-composer: dependencies
+fix-composer: vendor
 fix-composer:
 	composer normalize --no-update-lock
 	composer update nothing
