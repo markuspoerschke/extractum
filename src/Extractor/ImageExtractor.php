@@ -42,17 +42,25 @@ SELECTOR;
         }
 
         $nodes = $graph->getNodes();
-        if (isset($nodes[0])) {
-            $images = $nodes[0]->getProperty('http://schema.org/image');
-            if ($images instanceof JsonLD\NodeInterface) {
-                $images = [$images];
-            }
+        foreach ($nodes as $node) {
+            // dump($node->getId());
+            // dump($node->getType());
+            $type = $node->getType();
+            if ($type instanceof JsonLD\NodeInterface) {
+                if ($type->getId() === 'http://schema.org/WebPage') {
+                    $images = $node->getProperty('http://schema.org/primaryImageOfPage');
 
-            /** @var JsonLD\NodeInterface $image */
-            foreach ($images ?? [] as $image) {
-                $url = $image->getProperty('http://schema.org/url');
-                if ($url instanceof JsonLD\NodeInterface) {
-                    return $url->getId();
+                    if ($images instanceof JsonLD\NodeInterface) {
+                        $images = [$images];
+                    }
+
+                    /** @var JsonLD\NodeInterface $image */
+                    foreach ($images ?? [] as $image) {
+                        $url = $image->getProperty('http://schema.org/url');
+                        if ($url instanceof JsonLD\NodeInterface) {
+                            return $url->getId();
+                        }
+                    }
                 }
             }
         }
