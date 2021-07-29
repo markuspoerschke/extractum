@@ -25,7 +25,7 @@ jobs:
         uses: thomaseizinger/keep-a-changelog-new-release@1.2.1
         with:
           version: ${{ github.event.inputs.version }}
-          
+
       - run: git checkout -b release/${{ github.event.inputs.version }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4.11.0
