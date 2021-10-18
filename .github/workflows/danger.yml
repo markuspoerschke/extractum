@@ -6,7 +6,7 @@ jobs:
     name: Danger JS
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.3.5
       - name: Danger
         uses: danger/danger-js@10.7.0
         env:
