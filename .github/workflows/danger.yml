@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
       - name: Danger
-        uses: danger/danger-js@10.7.1
+        uses: danger/danger-js@10.8.0
         env:
           DANGER_DISABLE_TRANSPILATION: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
