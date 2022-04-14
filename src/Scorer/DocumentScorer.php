@@ -12,7 +12,6 @@
 namespace Extractum\Scorer;
 
 use DOMElement;
-use DOMNode;
 use Extractum\StopWords\StopWords;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -36,7 +35,6 @@ final class DocumentScorer
         $parentNodes = [];
 
         foreach ($crawler->filter('p, td, blockquote') as $node) {
-            assert($node instanceof DOMNode);
             $stopWordStatistics = $this->stopWords->getStatistics($node->textContent);
 
             if ($stopWordStatistics->getWordCount() < self::MINIMUM_WORD_COUNT) {

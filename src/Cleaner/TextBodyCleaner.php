@@ -11,7 +11,6 @@
 
 namespace Extractum\Cleaner;
 
-use DOMNode;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class TextBodyCleaner
@@ -35,7 +34,7 @@ SELECTOR;
         foreach ($crawler->filter(self::REMOVE_ELEMENTS_SELECTOR) as $node) {
             $parent = $node->parentNode;
 
-            if ($parent !== null && $node instanceof DOMNode) {
+            if ($parent !== null) {
                 $parent->removeChild($node);
             }
         }
