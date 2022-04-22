@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: reviewdog/action-languagetool@v1.8
+      - uses: reviewdog/action-languagetool@v1.9
         with:
           github_token: ${{ secrets.PAT }}
           level: info
