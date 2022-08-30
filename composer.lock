@@ -2137,16 +2137,16 @@
         },
         {
             "name": "pdepend/pdepend",
-            "version": "2.10.3",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "da3166a06b4a89915920a42444f707122a1584c9"
+                "reference": "9141e6f8e1f044aa64aedb0e6894d12618cdcb3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/da3166a06b4a89915920a42444f707122a1584c9",
-                "reference": "da3166a06b4a89915920a42444f707122a1584c9",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/9141e6f8e1f044aa64aedb0e6894d12618cdcb3e",
+                "reference": "9141e6f8e1f044aa64aedb0e6894d12618cdcb3e",
                 "shasum": ""
             },
             "require": {
@@ -2182,7 +2182,7 @@
             "description": "Official version of pdepend to be handled with Composer",
             "support": {
                 "issues": "https://github.com/pdepend/pdepend/issues",
-                "source": "https://github.com/pdepend/pdepend/tree/2.10.3"
+                "source": "https://github.com/pdepend/pdepend/tree/2.11.0"
             },
             "funding": [
                 {
@@ -2190,7 +2190,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-23T07:53:09+00:00"
+            "time": "2022-08-29T11:21:12+00:00"
         },
         {
             "name": "phar-io/manifest",
