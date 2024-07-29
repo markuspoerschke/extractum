@@ -5534,16 +5534,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.4.41",
+            "version": "v5.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "065a9611e0b1fd2197a867e1fb7f2238191b7096"
+                "reference": "909cec913edea162a3b2836788228ad45fcab337"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/065a9611e0b1fd2197a867e1fb7f2238191b7096",
-                "reference": "065a9611e0b1fd2197a867e1fb7f2238191b7096",
+                "url": "https://api.github.com/repos/symfony/string/zipball/909cec913edea162a3b2836788228ad45fcab337",
+                "reference": "909cec913edea162a3b2836788228ad45fcab337",
                 "shasum": ""
             },
             "require": {
@@ -5600,7 +5600,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v5.4.41"
+                "source": "https://github.com/symfony/string/tree/v5.4.42"
             },
             "funding": [
                 {
@@ -5616,7 +5616,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-28T09:20:55+00:00"
+            "time": "2024-07-20T18:38:32+00:00"
         },
         {
             "name": "symfony/var-dumper",
